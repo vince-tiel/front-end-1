@@ -1,10 +1,11 @@
+import { LinkTypes } from "@/lib/link-type";
+import { FooterLinks } from "@/types/app-links";
 import { Container } from "@/ui/components/container/container";
 import { Typography } from "@/ui/design-system/typography/typography";
 import Image from "next/image";
-import { footerApplicationLinks, footerLinks, footerUsersLinks } from "./app-links";
 import { v4 as uuidv4 } from "uuid";
 import { ActiveLink } from "./active-link";
-import { AppLinks, FooterLinks } from "@/types/app-links";
+import { footerLinks } from "./app-links";
 
 export const Footer = () => {
 
@@ -69,10 +70,10 @@ const FooterLink = ({data}:footerLinkProps) => {
     const linksList = data.links.map((link) => (
 
         <div key={uuidv4()}>
-            {link.type === "internal" && (
+            {link.type === LinkTypes.INTERNAL && (
                 <ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
             )}
-            {link.type === "external" && (
+            {link.type === LinkTypes.EXTERNAL && (
                 <a href={link.baseUrl} target="_blank">{link.label}</a>
             )}
             

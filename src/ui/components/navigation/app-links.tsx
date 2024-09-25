@@ -1,7 +1,7 @@
 import { AppLinks } from "@/types/app-links";
 
 
-export const footerApplicationLinks : AppLinks [] = [
+ const footerApplicationLinks : AppLinks [] = [
     {
         label: "Acceuil",
         baseUrl: "/",
@@ -24,7 +24,7 @@ export const footerApplicationLinks : AppLinks [] = [
     },
 ];
 
-export const footerUsersLinks : AppLinks [] = [
+ const footerUsersLinks : AppLinks [] = [
     {
         label: "Mon espace",
         baseUrl: "/#",
