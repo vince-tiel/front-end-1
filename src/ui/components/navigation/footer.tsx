@@ -6,6 +6,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { ActiveLink } from "./active-link";
 import { footerLinks } from "./app-links";
+import { SocialNetworksButtons } from "./social-networks-buttons";
 
 export const Footer = () => {
 
@@ -53,7 +54,9 @@ export const Footer = () => {
                         </a>
                         {` - remote monkey`}
                     </Typography>
-                    <div className=""></div>
+                    <div className="">
+                        <SocialNetworksButtons className="flex items-center"/>
+                    </div>
                 </div>
             
             </Container>

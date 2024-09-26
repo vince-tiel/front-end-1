@@ -68,7 +68,7 @@ const footerInformationLinks : AppLinks [] = [
         type: "internal",
     },
 ];
-const footerSocialNetworksLinks : AppLinks [] = [
+export const footerSocialNetworksLinks : AppLinks [] = [
     {
         label: "Youtube",
         baseUrl: "https://youtube.com/@remotemonkey",
