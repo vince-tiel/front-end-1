@@ -1,7 +1,8 @@
 
 // Component
 import { Container } from "@/ui/components/container/container";
-import { Navigation } from "@/ui/components/navigation/navigations";
+import { Layout } from "@/ui/components/layout/layout";
+
 import { Seo } from "@/ui/components/seo/seo";
 
 
@@ -20,8 +21,8 @@ export default function DesignSystem () {
         <>
     
       <Seo title="Design System" description="description....." />
-      <Navigation/>     
-      <Container className="py-10 space-y-5">
+        <Layout>
+         <Container className="py-10 space-y-5">
             {/* {typography} */}
       <div className="space-y-2">
           <Typography variant="caption2" weight="medium" >Typography</Typography>
@@ -175,6 +176,9 @@ export default function DesignSystem () {
           </div>
 
           </Container>
+        
+        </Layout>    
+     
       
     </>
   );

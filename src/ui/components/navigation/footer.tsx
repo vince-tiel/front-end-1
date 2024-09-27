@@ -55,7 +55,7 @@ export const Footer = () => {
                         {` - remote monkey`}
                     </Typography>
                     <div className="">
-                        <SocialNetworksButtons className="flex items-center"/>
+                        <SocialNetworksButtons theme="gray" />
                     </div>
                 </div>
             
