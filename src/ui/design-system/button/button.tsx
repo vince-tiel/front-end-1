@@ -6,7 +6,7 @@ import Link from "next/link";
 
 interface Props {
     size?: "small" |"medium" |"large";
-    variant?:"accent" |"secondary" |"outline"|"disabled"|"ico";
+    variant?:"accent" |"secondary" |"outline"|"disabled"|"ico"|"success";
     icon?: IconProps;
     iconTheme?: "accent" |"secondary" |"gray";
     iconPosition?: "left" |"right";
@@ -16,6 +16,8 @@ interface Props {
     baseUrl?: string;
     linkType?: LinkType;
     action?: Function;
+    type?: "button" | "submit";
+    fullwith?: boolean;
 }
 
 export const Button = ({
@@ -29,6 +31,8 @@ export const Button = ({
     children,
     baseUrl,
     linkType = "internal",
+    type = "button",
+    fullwith = false,
     action = () => { },
 
 }: Props) => {
@@ -56,6 +60,9 @@ export const Button = ({
 
             variantStyles = "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed ";
                 
+            break;
+        case "success":
+            variantStyles = "bg-secondary hover:bg-secondary-400 text-white rounded";
             break;
         case "ico":
 
@@ -99,9 +106,9 @@ export const Button = ({
 
     const handleClick = () => {
         if (action) {
-            action()
+            action();
         }
-    }
+    };
 
         const buttonContent = (
             <>
@@ -145,8 +152,8 @@ export const Button = ({
         const buttonElement = (
             <>
             <button
-                type="button"
-                className={clsx(variantStyles, sizeStyles, icoSize, isLoading && "cursor-wait", "relative animate")}
+                type={type}
+                className={clsx(variantStyles, sizeStyles, icoSize, isLoading && "cursor-wait", fullwith && "w-full", "relative animate")}
                 onClick={handleClick}
                 disabled={disabled} >
 

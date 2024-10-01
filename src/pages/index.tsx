@@ -1,4 +1,5 @@
 // {component}
+
 import { Layout } from "@/ui/components/layout/layout";
 
 
@@ -12,8 +13,9 @@ export default function Home() {
     <>
     
       <Seo title="Le code de monkey" description="generate by create nbext app....." />
-      <Layout>
-        <LandingPageContainer/>
+      <Layout isDisplayBreadCrumbs={false}>
+        <LandingPageContainer />
+        
       
       </Layout>
       

@@ -67,7 +67,7 @@ export const FeaturedView = () => {
         <div className="bg-gray-300">
             <Container className="grid grid-cols-12 gap-24 py-24">
                 <div className="grid grid-cols-2 col-span-7 gap-7 ">{featuredList }</div>
-                <div className="flex flex-col justify-between col-span-5 gap-10">
+                <div className="flex flex-col justify-between col-span-5 gap-10 ">
                     <div>
                         <Typography variant="h2" component="h2" className="mb-5">
                             L'endroit le plus cool pour devenir développeur
