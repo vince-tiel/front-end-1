@@ -138,32 +138,32 @@ export default function DesignSystem () {
           <div className="space-y-4">
 
             <div className="flex items-center gap-2">
-                <Button isLoading size="small">Accent</Button>
-                <Button isLoading size="small" icon={{icon: RiShieldUserLine}} iconPosition="left">Accent</Button>
-                <Button isLoading size="small" variant="secondary">secondary</Button>
-                <Button isLoading size="small" variant="ico" icon={{icon: RiUser6Fill}}/>
-                <Button isLoading size="small" variant="outline">Accent</Button>
-                <Button isLoading size="small" variant="disabled">Accent</Button>
-                <Button  variant="ico" icon={{icon: RiNotification2Fill}}/>
+                <Button baseUrl="/#" isLoading size="small">Accent</Button>
+                <Button baseUrl="/#" isLoading size="small" icon={{icon: RiShieldUserLine}} iconPosition="left">Accent</Button>
+                <Button baseUrl="/#" isLoading size="small" variant="secondary">secondary</Button>
+                <Button baseUrl="/#" isLoading size="small" variant="ico" icon={{icon: RiUser6Fill}}/>
+                <Button baseUrl="/#" isLoading size="small" variant="outline">Accent</Button>
+                <Button baseUrl="/#" isLoading size="small" variant="disabled">Accent</Button>
+                <Button baseUrl="/#"  variant="ico" icon={{icon: RiNotification2Fill}}/>
 
             
             
               </div>
               <Typography variant="caption3" weight="medium" >medium</Typography>
               <div className="flex items-center gap-2" >
-                <Button>Accent</Button>
-                <Button variant="secondary" icon={{icon: RiShieldUserLine}}>secondary</Button>
-                <Button variant="outline">Accent</Button>
-                <Button variant="disabled">Accent</Button>
-                <Button  variant="ico" icon={{icon: RiNotification2Fill}}/>
+                <Button baseUrl="/#">Accent</Button>
+                <Button baseUrl="/#" variant="secondary" icon={{icon: RiShieldUserLine}}>secondary</Button>
+                <Button baseUrl="/#" variant="outline">Accent</Button>
+                <Button baseUrl="/#" variant="disabled">Accent</Button>
+                <Button baseUrl="/#"  variant="ico" icon={{icon: RiNotification2Fill}}/>
               </div>
               <Typography variant="caption3" weight="medium" >Large</Typography>
               <div className="flex items-center gap-2">
-                <Button size="large">Accent</Button>
-                <Button size="large" variant="secondary" icon={{icon: RiShieldUserLine}}>secondary</Button>
-                <Button size="large" variant="outline">Accent</Button>
-                <Button size="large" variant="disabled" disabled>Accent</Button>
-                <Button size="large" variant="ico" icon={{icon: RiNotification2Fill}} iconTheme="secondary"/>
+                <Button baseUrl="/#" size="large">Accent</Button>
+                <Button baseUrl="/#" size="large" variant="secondary" icon={{icon: RiShieldUserLine}}>secondary</Button>
+                <Button baseUrl="/#" size="large" variant="outline">Accent</Button>
+                <Button baseUrl="/#" size="large" variant="disabled" disabled>Accent</Button>
+                <Button baseUrl="/#" size="large" variant="ico" icon={{icon: RiNotification2Fill}} iconTheme="secondary"/>
 
                 <Button size="large" variant="ico" icon={{icon: RiNotification2Fill}}
                 iconTheme="gray"/>

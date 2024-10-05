@@ -153,9 +153,9 @@ export const Button = ({
             <>
             <button
                 type={type}
-                className={clsx(variantStyles, sizeStyles, icoSize, isLoading && "cursor-wait", fullwith && "w-full", "relative animate")}
+                className={clsx(variantStyles, sizeStyles, icoSize, isLoading && "cursor-not-allowed", fullwith && "w-full", "relative animate")}
                 onClick={handleClick}
-                disabled={disabled} >
+                disabled={disabled || isLoading ? true: false} >
 
                 {buttonContent}
 

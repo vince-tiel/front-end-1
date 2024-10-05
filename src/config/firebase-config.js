@@ -1,4 +1,4 @@
-
+import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 
@@ -12,4 +12,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const initializeApp = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);

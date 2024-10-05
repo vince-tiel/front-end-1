@@ -33,7 +33,7 @@ export const Navigation = ({ }: Props) => {
                     </Typography>
                     <div className="flex items-center gap-2" >
                         <Button baseUrl="/connexion" size="small" >Connexion</Button>
-                        <Button baseUrl="/inscription" size="small" variant="secondary" >Rejoindre</Button>
+                        <Button baseUrl="/connexion/inscription" size="small" variant="secondary" >Rejoindre</Button>
                     
                     </div>
                 </div>

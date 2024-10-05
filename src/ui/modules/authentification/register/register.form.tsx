@@ -9,7 +9,7 @@ interface Props {
 
 export const RegisterForm = ({ form }: Props) => {
     const {
-        control,
+    
         onSubmit,
         errors,
         isLoading,
@@ -44,7 +44,14 @@ export const RegisterForm = ({ form }: Props) => {
                 errorMsg="Tu dois renseigner ce champ"
                 id="how_did_hear"
             />
-            <Button isLoading={isLoading} type="submit"  fullwith>S'inscrire</Button>
+            <Button
+                
+                baseUrl="https://console.firebase.google.com/project/formation-f0515/authentication/users"
+                type="submit"
+                isLoading={isLoading}
+                fullwith>
+                S'inscrire
+            </Button>
             
         </form>
     

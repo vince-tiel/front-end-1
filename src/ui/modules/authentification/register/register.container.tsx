@@ -1,14 +1,20 @@
 import { RegisterView } from "./register.view";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterFormFielsType } from "@/types/forms";
-import { log } from "console";
+
+import { firebaseCreateUser } from "@/api/authentication";
+import { toast } from "react-toastify";
+import { useToggle } from "@/hooks/use-toggle";
+
+
 export const RegisterContainer = () => {
 
 
-    const isLoading = false;
+    const { value : isLoading, setValue : setIsLoading } = useToggle({initial:true});
+   
     const {
         handleSubmit,
-        control,
+        
         formState: { errors },
         register,
         setError,
@@ -16,24 +22,64 @@ export const RegisterContainer = () => {
 
     } = useForm<RegisterFormFielsType>();
 
-    const onSubmit : SubmitHandler <RegisterFormFielsType> = async (formData) => {
-        console.log('formData', formData)
+    const handleCreateUserAuthentication = async ({
+        email,
+        password,
+        how_did_hear }
+        : RegisterFormFielsType) => {
+        const { error, data } = await firebaseCreateUser(email, password)
+        if (error) {
+            setIsLoading(false)
+            toast.error(error.message)
+            return;
+        }
+        toast.success("Bienvenue sur cette application de codeurs")
+        setIsLoading(false);
+        reset();
         
-    }
+        
+    };
+
+    const onSubmit: SubmitHandler<RegisterFormFielsType> = async (formData) => {
+        setIsLoading(true);
+       
+
+        const {  password } = formData;
+
+        if (password.length <= 5) {
+            setError("password", {
+                type: "manual",
+                message: "Ton mot de passe doit au minimum comporter 6 caractères",
+                
+            });
+            return; 
+        }
+        handleCreateUserAuthentication (formData)
+        
+    };
     
     return (
+        
         <>
+           
             <RegisterView
                 form={{
                     errors,
-                    control,
+                    
                     register,
                     handleSubmit,
                     onSubmit,
                     isLoading,
+                    
             }}
             />
         </>
+            
+             
+        
+    
+           
+        
     );
     
 };

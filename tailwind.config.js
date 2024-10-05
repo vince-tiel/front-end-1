@@ -31,6 +31,11 @@ module.exports = {
         DEFAULT: "1D1D1D",
         
       },
+      alert: {
+        danger: "#FF4E4E",
+        success: "#990A1",
+        warning: "#FEB72F",
+      }
 
     },
 
