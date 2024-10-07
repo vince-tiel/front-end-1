@@ -47,6 +47,7 @@ export const RegisterForm = ({ form }: Props) => {
             <Button
                 
                 baseUrl="https://console.firebase.google.com/project/formation-f0515/authentication/users"
+                
                 type="submit"
                 isLoading={isLoading}
                 fullwith>

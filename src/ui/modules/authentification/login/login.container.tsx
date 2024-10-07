@@ -5,8 +5,12 @@ import {  LoginFormFielsType } from "@/types/forms";
 import { onAuthStateChanged } from "firebase/auth";
 import {auth} from"@/config/firebase-config"
 import { useToggle } from "@/hooks/use-toggle";
+import { firebaseSignInUser } from "@/api/authentication";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 export const LoginContainer = () => {
+    const router = useRouter()
    const { value : isLoading, setValue : setIsLoading } = useToggle();
     
     useEffect(() => {
@@ -30,6 +34,18 @@ export const LoginContainer = () => {
         reset,
 
     } = useForm<LoginFormFielsType>();
+    const handleSignInUser = async ({ email, password }: LoginFormFielsType) => {
+        const { error } = await firebaseSignInUser(email, password);
+        if (error) {
+            setIsLoading(false);
+            toast.error(error.message)
+            return;
+        }
+        toast.success("Bienvenue sur le site");
+        setIsLoading(false);
+        reset();
+        router.push("/mon-espace");
+    };
 
     const onSubmit: SubmitHandler<LoginFormFielsType> = async (formData) => {
         setIsLoading(true);
@@ -40,8 +56,10 @@ export const LoginContainer = () => {
                 message:"Ton mot de passe doit comporter minimum 6 caractères",
                     
             })
+            setIsLoading(false)
+            return;
         }
-        console.log('formData', formData)
+        handleSignInUser(formData);
         
     };
     return (<LoginView
