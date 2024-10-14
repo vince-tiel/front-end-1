@@ -5,6 +5,7 @@ export interface FormsType {
     isLoading: boolean;
     register: any;
     handleSubmit: any;
+    
 }
 
 
@@ -23,4 +24,10 @@ export interface ForgetPasswordFormFielsType {
     email: string;
     
     
+}
+
+export interface OnboardingProfileFormFieldsType {
+    displayName: string;
+    expertise: string;
+    biography: string;
 }

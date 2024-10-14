@@ -1,5 +1,6 @@
 // {component}
 
+import { GUEST } from "@/lib/session-status";
 import { Layout } from "@/ui/components/layout/layout";
 
 
@@ -14,7 +15,7 @@ export default function Connexion() {
     <>
     
       <Seo title="Connexion" description="generate by create nbext app....." />
-      <Layout >
+      <Layout sessionStatus={GUEST}>
        
         <LoginContainer/>
       

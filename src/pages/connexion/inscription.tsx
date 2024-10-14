@@ -1,3 +1,4 @@
+import { GUEST } from "@/lib/session-status";
 import { Layout } from "@/ui/components/layout/layout";
 
 
@@ -12,7 +13,7 @@ export default function Register() {
     <>
     
       <Seo title="inscription" description="generate by create nbext app....." />
-      <Layout >
+      <Layout sessionStatus={GUEST}>
        
        <RegisterContainer />
       

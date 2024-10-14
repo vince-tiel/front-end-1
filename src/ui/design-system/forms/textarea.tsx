@@ -1,10 +1,10 @@
 import { clsx } from "clsx";
-import { Typography } from "@/ui/design-system/typography/typography";
+import { Typography } from "../typography/typography";
 
 interface Props {
     isLoading: boolean;
     placeholder: string;
-    type?: "text" | "email" | "password";
+    rows?: number;
     register: any;
     errors: any;
     errorMsg?: String;
@@ -13,10 +13,11 @@ interface Props {
     isAutocompleted?: boolean;
     label?: string;
 }
-export const Input = ({
+
+export const Textarea = ({ 
     isLoading,
     placeholder,
-    type = "text",
+    rows = 5,
     register,
     errors,
     errorMsg = "Tu dois renseigner ce champ",
@@ -32,28 +33,29 @@ export const Input = ({
                     {label}
                 </Typography>
             )}
-            
-            <input type={type}
+            <textarea
+                rows={rows}
                 placeholder={placeholder}
                 className={clsx(
-                    isLoading && "cursor-not-allowed",
-                    errors[id] ? "placeholder-alert-danger text-alert-danger":"placeholder-gray-600" ,"w-full p-4 font-light border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-primary "
+                    isLoading ? " bg-gray-300 focus:ring-gray-300 cursor-not-allowed":"bg-white",
+                    errors[id] ? "placeholder-alert-danger text-alert-danger"
+                        : "placeholder-gray-600",
+                    "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-primary border-gray-400"
                 )}
                 disabled={isLoading}
                 {...register(id, {
-                        required: {
+                    required: {
                         value: required,
-                        message:errorMsg,
-                    },
+                        message: errorMsg,
+                    }
                 })}
-                autoComplete={ isAutocompleted ? "on" : "off"}
+                autoComplete={isAutocompleted ? "on" : "off"}
             />
-            {errors[id] && (
+             {errors[id] && (
                 <Typography variant="caption4" component="div" theme="danger">
                     (errors[id] ? .message)
                 </Typography>
             )}
-        
         </div>
-    );
-};
+    )
+}

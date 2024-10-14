@@ -1,3 +1,4 @@
+import { GUEST } from "@/lib/session-status";
 import { Layout } from "@/ui/components/layout/layout";
 
 
@@ -12,7 +13,7 @@ export default function ForgetPassword() {
     <>
     
       <Seo title="Mot-de-passe-perdu" description="generate by create nbext app....." />
-      <Layout >
+      <Layout sessionStatus={GUEST}>
        
         <ForgetPasswordContainer/>
       

@@ -1,15 +1,18 @@
+import { SessionStatusTypes } from "@/types/session-status-types";
 import { BreadCrumbs } from "../breadcrumbs/bread-crumbs"
 import { Container } from "../container/container";
 import { Footer } from "../navigation/footer"
 import { Navigation } from "../navigation/navigations"
 import { UserAccountNavigation } from "../navigation/user-account-navigation";
+import { Session } from "../session/session";
 
 interface Props {
   children: React.ReactNode;
   isDisplayBreadCrumbs?: boolean;
   withSidebar?: boolean;
+  sessionStatus?: SessionStatusTypes;
 }
-export const Layout = ({ children, isDisplayBreadCrumbs = true, withSidebar }: Props) => {
+export const Layout = ({ children, isDisplayBreadCrumbs = true, withSidebar,sessionStatus }: Props) => {
   
   let view: React.ReactNode = <></>;
 
@@ -29,12 +32,12 @@ export const Layout = ({ children, isDisplayBreadCrumbs = true, withSidebar }: P
   }
 
     return(
-      <> 
+      <Session sessionStatus={sessionStatus}> 
         <Navigation />
        
         {isDisplayBreadCrumbs &&  <BreadCrumbs />}
             {view}
             <Footer/>
-      </>
+      </Session>
   )  
 }

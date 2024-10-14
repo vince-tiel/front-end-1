@@ -1,3 +1,4 @@
+import { REGISTERED } from "@/lib/session-status";
 import { Layout } from "@/ui/components/layout/layout";
 
 
@@ -8,12 +9,12 @@ import { UserAccountContainer } from "@/ui/modules/user-profile/user-account/use
 
 
 
-export default function Connexion() {
+export default function UserAccount() {
   return (
     <>
     
       <Seo title="Mon espace" description="ma page" />
-      <Layout withSidebar>
+      <Layout withSidebar sessionStatus={REGISTERED}>
        
         <UserAccountContainer/>
       

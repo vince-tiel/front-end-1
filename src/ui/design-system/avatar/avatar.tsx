@@ -32,7 +32,7 @@ export const Avatar = ({size ="medium",src,alt}:Props) =>{
 
         <div className={clsx(sizeStyles, "bg-gray-400 rounded-full relative")}>
         <Image
-        src={src}
+        src={src ? src:"/assets/svg/barell.svg"}
         alt={alt}
         fill
         

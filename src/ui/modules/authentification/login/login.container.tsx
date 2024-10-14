@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+
 import { LoginView } from "./login.view"
 import { SubmitHandler, useForm } from "react-hook-form";
 import {  LoginFormFielsType } from "@/types/forms";
-import { onAuthStateChanged } from "firebase/auth";
-import {auth} from"@/config/firebase-config"
+
+
 import { useToggle } from "@/hooks/use-toggle";
 import { firebaseSignInUser } from "@/api/authentication";
 import { toast } from "react-toastify";
@@ -13,17 +13,7 @@ export const LoginContainer = () => {
     const router = useRouter()
    const { value : isLoading, setValue : setIsLoading } = useToggle();
     
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-            } else {
-                console.log("not connected");
-                
-            }
-        });
-        
-    }, []);
+ 
     
     const {
         handleSubmit,

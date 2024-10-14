@@ -13,7 +13,7 @@ interface Props {
     disabled?: boolean;
     isLoading?: boolean;
     children?: React.ReactNode;
-    baseUrl?: string;
+    baseUrl?: string ;
     linkType?: LinkType;
     action?: Function;
     type?: "button" | "submit";
