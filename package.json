@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export && firebase deploy",
-    "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "ESlint": "next lint"
   },
   "dependencies": {
     "clsx": "^2.1.1",
