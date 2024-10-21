@@ -1,46 +1,74 @@
-import clsx from "clsx";
-import Image from "next/image";
+// import clsx from "clsx";
+// import Image from "next/image";
 
-interface Props {
-    size?:  "small" | "medium" |"large";
-    src: string;
-    alt:string;
-}
+import { useAuth } from "@/context/AuthUserContext";
+import { useToggle } from "@/hooks/use-toggle";
+import { BaseComponentProps } from "@/types/onboarding-steps-list";
+import { OnboardingFooter } from "../../footer/onboarding-footer";
+import { Container } from "@/ui/components/container/container";
 
-export const Avatar = ({size ="medium",src,alt}:Props) =>{
+import { Typography } from "@/ui/design-system/typography/typography";
+import { OnboardingTabs } from "../../tabs/onboarding-tabs";
+import { UploadAvatar } from "@/ui/components/upload-avatar/upload-avatar";
+import { useState } from "react";
 
-    let sizeStyles : string;
+export const AvatarStep = ({
+  prev,
+  next,
+  isFinalStep,
+  stepList,
+  getCurrentStep
+}: BaseComponentProps) => {
+  const { authUser } = useAuth();
+  const { value: isLoading, setValue: setLoading } = useToggle();
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedImage(file);
 
-    switch (size) {
-        
-            case "small":
-                sizeStyles = "w-[24px] h-[24px]";
-                break;
-                case "medium": //default
-                    sizeStyles = "w-[34px] h-[34px]";
-                    break;
-                    case "large":
-                        sizeStyles = "w-[50px] h-[50px]";
-                        break;
-    
-        
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let imgDataUrl: string | ArrayBuffer | null = null;
+        if (e.target) {
+          imgDataUrl = e.target.result;
+        }
+      };
     }
-
-
-    return (
-
-
-        <div className={clsx(sizeStyles, "bg-gray-400 rounded-full relative")}>
-        <Image
-        src={src ? src:"/assets/svg/barell.svg"}
-        alt={alt}
-        fill
-        
-        className="object-cover object-center rounded-full"
-       
-        
-        />
-        </div>
-
-    )
-}
+  };
+  return (
+    <div className="relative h-screen pb-[91px]">
+      <div className="h-full overflow-auto">
+        <Container className="grid h-full grid-cols-12">
+          <div className="relative z-10 flex items-center h-full col-span-6 py-10">
+            <div className="w-full space-y-5 pb-4.5">
+              <OnboardingTabs tabs={stepList} getCurrentStep={getCurrentStep} />
+              <Typography variant="h1" component="h1">
+                Dernière étape !
+              </Typography>
+              <Typography variant="body-base" component="p" theme="gray">
+                C'est sûr t'as une tête à être sur Coders Monkeys ! Mais on a
+                besoin de ta plus belle photo de profil pour que tout le monde
+                puisse voir à quel point tu es incroyable. Mettre une photo
+                sympa, c'est la garantie de te faire remarquer et de faire
+                craquer les développeurs en quête de nouveaux contacts. Alors
+                montre-nous ta belle gueule et rejoins la communauté !
+              </Typography>
+            </div>
+          </div>
+          <div className="flex items-center h-full col-span-6">
+            <div className="flex justify-center w-full">
+              <UploadAvatar handleImageSelect={handleImageSelect} />
+            </div>
+          </div>
+        </Container>
+      </div>
+      <OnboardingFooter
+        prev={prev}
+        next={next}
+        isFinalStep={isFinalStep}
+        isLoading={isLoading}
+      />
+    </div>
+  );
+};
