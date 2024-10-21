@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/AuthUserContext"
-import { Avatar } from "@/ui/design-system/avatar/avatar"
+import { Avatar } from "@/ui/modules/onboarding/components/steps/avatar-step/avatar-step";
 import { Typography } from "@/ui/design-system/typography/typography"
 import Link from "next/link"
 

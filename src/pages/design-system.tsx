@@ -7,7 +7,7 @@ import { Seo } from "@/ui/components/seo/seo";
 
 
 // Design system
-import { Avatar } from "@/ui/design-system/avatar/avatar";
+import { Avatar } from "@/ui/modules/onboarding/components/steps/avatar-step/avatar-step";
 import { Button } from "@/ui/design-system/button/button";
 import { Logo } from "@/ui/design-system/logo/logo";
 import { Spinner } from "@/ui/design-system/spinner/spinner";
