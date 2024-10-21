@@ -3,8 +3,9 @@ import { RiCamera2Fill } from "react-icons/ri";
 
 interface Props {
   handleImageSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  imagePreview: string | ArrayBuffer | null;
 }
-export const UploadAvatar = ({ handleImageSelect }: Props) => {
+export const UploadAvatar = ({ handleImageSelect, imagePreview }: Props) => {
   return (
     <div className="flex items-center gap-5">
       <label className="inline-block text-white bg-primary hover:bg-primary-400 rounded px-[18px] py-[15px] text-caption2 font-medium cursor-pointer animate">
@@ -14,7 +15,17 @@ export const UploadAvatar = ({ handleImageSelect }: Props) => {
         </div>
         <input type="file" className="hidden" onChange={handleImageSelect} />
       </label>
-      <Avatar size="extra-large" alt="avatar" src="/assets/svg/camera.svg" />
+      <Avatar
+        size="extra-large"
+        alt="avatar"
+        src={
+          imagePreview
+            ? typeof imagePreview === "string"
+              ? imagePreview
+              : String(imagePreview)
+            : "/assets/svg/camera.svg"
+        }
+      />
     </div>
   );
 };
