@@ -11,12 +11,13 @@ export interface UserInterface {
 }
 
 export interface UserDocument {
-    uid: string;
-    email: string;
-    how_did_hear: string;
-    creation_date: Timestamp;
-    onboardingIsCompleted: boolean;
-    displayName:string;
-    expertise:string;
-    biography:string;
+  uid: string;
+  email: string;
+  how_did_hear: string;
+  creation_date: Timestamp;
+  onboardingIsCompleted: boolean;
+  displayName: string;
+  expertise: string;
+  biography: string;
+  photoURL: string | null;
 }
