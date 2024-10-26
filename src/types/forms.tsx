@@ -31,3 +31,10 @@ export interface OnboardingProfileFormFieldsType {
     expertise: string;
     biography: string;
 }
+export interface UserProfileFormFieldsType {
+  displayName: string;
+  expertise: string;
+  biography: string;
+  github: string;
+  linkedin: string;
+}
