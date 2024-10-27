@@ -15,13 +15,31 @@ export const ProfileContainer = () => {
     setValue,
     setError
   } = useForm<UserProfileFormFieldsType>();
+  const handleUpdateUserDocument = async (
+    formData: UserProfileFormFieldsType
+  ) => {
+    setLoading(true);
+    setLoading(false);
+  };
   const onSubmit: SubmitHandler<UserProfileFormFieldsType> = async (
     formData
-  ) => {};
+  ) => {
+    handleUpdateUserDocument(formData);
+    return;
+  };
 
   return (
     <>
-      <ProfileView />
+      <ProfileView
+        form={{
+          errors,
+          control,
+          register,
+          handleSubmit,
+          onSubmit,
+          isLoading
+        }}
+      />
     </>
   );
 };
