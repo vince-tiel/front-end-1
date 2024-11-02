@@ -17,7 +17,7 @@ import { storage } from "@/config/firebase-config";
 import { updateUserIdentificationData } from "@/api/authentication";
 
 export const ProfileContainer = () => {
-  const { authUser } = useAuth();
+  const { authUser, reloadAuthUserData } = useAuth();
   const { value: isLoading, setValue: setLoading } = useToggle();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(
@@ -85,10 +85,15 @@ export const ProfileContainer = () => {
         (error) => {
           setLoading(false);
           toast.error("une erreur inconnue est survenue");
+          setUploadProgress(0);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             updateUserAvatar(downloadURL);
+            setSelectedImage(null);
+            setTimeout(() => {
+              setUploadProgress(0);
+            }, 1000);
           });
         }
       );
@@ -111,6 +116,7 @@ export const ProfileContainer = () => {
       toast.error(error.message);
       return;
     }
+    reloadAuthUserData();
     setLoading(false);
   };
 
@@ -179,6 +185,7 @@ export const ProfileContainer = () => {
           toast.error(error.message);
           return;
         }
+        reloadAuthUserData();
       }
       for (const key in formData) {
         if (
